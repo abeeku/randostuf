@@ -1,0 +1,44 @@
+import pyforms
+from pyforms                import BaseWidget
+from pyforms.Controls       import ControlList
+from People                 import People
+from PersonWindow           import PersonWindow
+from AddMenuFuntionality    import AddMenuFuntionality
+from pyforms.Controls       import ControlEmptyWidget
+
+class PeopleWindow(AddMenuFunctionality, People, BaseWidget):
+    def __init__(self):
+        self._panel = ControlEmptyWidget()
+        Person.__init__(self)
+        BaseWidget.__init__(self, 'People window')
+
+        self._peopleList     = ControlList('People',
+                plusFunction = self.addPersonBtnAction,
+                minusFunction = self.rmPersonBtnAction)
+
+        self._peopleList.horizontalHeaders = ['First Name', 'Middle Name','Last Name']
+
+    def addPerson(self, person):
+        win = PersonWindow()
+        win.parent = self
+        win.show()
+
+    def removePerson(self, index):
+        super(PeopleWindow, self).removePerson(index)
+        self._peopleList -= index
+
+    def __addPersonBtnAction(self):
+        win = PersonWindow()
+        win.parent = self
+        win.show()
+
+    def __rmPersonBtnAction(self):
+        self.removePerson( self._peopleList.selected_row_index )
+
+    def __addPersonBtnAction(self):
+        win = PersonWindow()
+        win.parent = self
+        self._panel.value = win
+
+
+if __name__ == "__main__": pyforms.start_app( PeopleWindow )

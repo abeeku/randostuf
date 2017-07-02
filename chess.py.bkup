@@ -1,0 +1,58 @@
+spots = [r1,r2,r3,r4,r5]
+
+r1->r3
+r3->r4
+r4->r5
+r5->r2
+r2->r3
+
+p1.follow_arrows = true
+p2.follow_arrows = true
+
+p1.tulsas.follow_arrows = false
+p2.tulsas.follow_arrows = false
+# tulsas damage over miles
+
+'''
+Sabatogists
+- Wo1
+- 4lace
+
+HHH
+- lance1
+- fri
+- 2lace
+
+ConCon
+- Wo2
+- Tig
+- Br
+
+CarLu
+- Ed
+- Fran
+'''
+# The 9
+# A, D, W
+# Spec. A
+class Splitter # Balance Breaker
+class Sabatogist # ???
+class King_P1_P2
+class Draf # Low Energy
+class Nature_Concon # X Control
+class Fair # Winter Summer
+class Foul # Vmp , etc
+class HHH # Lo A hD Shi
+class Brut_CarLu # Under Cont.  Att. Own
+
+
+blips =
+{"α" : "King"
+,"η" : "Sabatogist"
+,"ι" : "Draf"
+,"Κ" : "Fair"
+,"μ" : "CarLu"
+,"ν" : "Splitter"
+,"ξ" : "Foul "
+,"σ" : "ConCon"
+,"φ" : "HHH" }

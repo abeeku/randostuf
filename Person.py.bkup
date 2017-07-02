@@ -1,0 +1,13 @@
+import pickle
+class Person(object):
+    def __init__(self, firstName, middleName, lastName):
+        self._firstname     = firstName
+        self._middleName    = middleName
+        self._lastname      = lastName
+
+    @property
+    def fullName(self):
+        return "{0} {1} {2}".format(self._firstname, self._middleName, self.lastName)
+
+
+

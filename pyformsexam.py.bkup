@@ -1,0 +1,75 @@
+import pyforms
+from pyforms            import BaseWidget
+from pyforms.Controls   import ControlText
+from pyforms.Controls   import ControlButton
+
+class SimpleExample1(BaseWidget):
+    def __init__(self):
+
+        super(SimpleExample1, self).__init__('Simple Example 1')
+        self._firstname = ControlText('First Name', "Mike")
+        self._middlename = ControlText('Middle Name')
+        self._lastname = ControlText("Last name")
+        self._fullname = ControlText("Full name")
+        self._button = ControlButton("Press this Button")
+        self._button.value = self.__buttonAction
+
+        self.formset = [
+                {
+                    'Tab1':['_firstname', '||','_middlename','||', '_lastname'],
+                    'Tab2': ['_fullname']
+                    },
+                '=', (' ','_button',' ')
+                ]
+        self.mainmenu = [
+                { 'File': [
+                    {'Open': self.__openEvent},
+                    '-',
+                    {'Save': self.__saveEvent},
+                    {'Save as': self.__saveAsEvent}
+
+                    ]
+                    },
+                {'Edit': [
+                    {'Copy': self.__editEvent},
+                    {'Paste': self.__pastEvent}
+                    ] }
+                ]
+
+    def __buttonAction(self):
+        """Button action event"""
+        self._fullname.value = self._firstname.value + " " + self._middlename.value + \
+                " " + self._lastname.value
+
+    def __openEvent(self):
+        #fds
+        return 0
+
+    def __saveEvent(self):
+        # fdff
+        return 0
+
+    def __saveAsEvent(self):
+        #fdsf
+        return 0
+
+    def __editEvent(self):
+        #fdsf
+        return 0
+
+    def __pastEvent(self):
+        #fdsf
+        return 0
+
+
+
+
+# Execute the application
+if __name__ == "__main__": pyforms.startApp(SimpleExample1)
+
+#colorsbox-stbright
+#neverland-darker
+#landscape
+#thornbird
+#pf_earth
+#gotham

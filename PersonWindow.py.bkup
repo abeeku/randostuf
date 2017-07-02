@@ -1,0 +1,29 @@
+import pyforms
+from pyforms import BaseWidget
+from pyforms.Controls import ControlText
+from pyforms.Controls import ControlButton
+from Person import Person
+from pyforms.Controls import ControlDockWidget
+class PersonWindow(Person, BaseWidget):
+    def __init__(self):
+        self_panel = ControlDockWidget()
+        Person.__init__(self, '', '','')
+        BaseWidget.__init__(self, 'Person window')
+
+        self._firstNameField = ControlText('First Name')
+        self._middleNameField = ControlText('Middle Name')
+        self._lastnameField = ControlText('Last Name')
+        self._fullnameField = ControlText('Full Name')
+        self._buttonField = ControlButton('SUBMIT')
+
+        self._buttonField.value = self.__buttonAction
+
+    def __buttonAction(self):
+        self._firstName = self._firstNameField.value
+        self._middleName = self._middleNameField.value
+        self._lastName = self._lastnameField.value
+        self._fullName = self._fullnameField.value
+
+        if self.parent != None: self.parent.addPerson(self)
+
+if __name__ == "__main__":    pyforms.startApp( PersonWindow  )

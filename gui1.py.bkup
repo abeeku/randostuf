@@ -1,0 +1,48 @@
+#!usr/bin/python
+
+from Tkinter import *
+import Tkinter
+import tkMessageBox
+
+top = Tkinter.Tk()
+frame = Frame(top)
+frame.pack()
+
+bFrame = Frame(root)
+bFrame.pack(side = BOTTOM)
+
+rbut= Button(frame(text="Red", fg="red")
+rbut.pack(side=LEFT)
+
+gbut = Button(frame, text="Brown", fg="brown")
+gbut.pack(side=LEFT)
+
+bbut = Button(frame, text="Blue", fg="blue")
+bbut.pack(side=LEFT)
+
+blbut = Button( )
+CheckVar1 = IntVar()
+CheckVar2 = IntVar()
+C1 = Checkbutton(top, text="Music", variable=CheckVar1, \
+                onvalue = 1, offvalue = 0, height=6, \
+                width = 24)
+
+C2 = Checkbutton(top, text="Video", variable=CheckVar2, \
+                onvalue = 1, offvalue = 0, height=6, \
+                width = 24)
+
+L1 = Label(top,text="Whart be'est tho'u na'em: ")
+L1.pack(side=LEFT)
+E1 = Entry(top, bd=5)
+
+E1.pack(side=RIGHT)
+def ayo():
+    tkMessageBox.showinfo("Popeye's","Fast " + E1.get())
+
+
+B = Tkinter.Button(top, text="Louisiana", command=ayo)
+
+B.pack();
+C1.pack();
+C2.pack();
+top.mainloop();
